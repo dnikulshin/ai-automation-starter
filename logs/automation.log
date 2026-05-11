@@ -67,3 +67,20 @@ app_title
 2026-05-11 19:04:19 [INFO] src.exporter: 📄 Exported: test_dental.md
 2026-05-11 19:04:19 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
 2026-05-11 19:04:19 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 21:32:09 [INFO] src.cli: 📄 Using custom prompt from env: prompts\default.yaml
+2026-05-11 21:32:09 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 21:32:11 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 21:33:11 [INFO] src.cli: 📄 Using custom prompt from env: prompts\default.yaml
+2026-05-11 21:33:12 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 21:33:12 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 21:33:17 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 21:33:17 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 21:33:17 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 21:33:20 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 21:35:26 [INFO] src.cli: 📄 Using custom prompt from env: prompts\default.yaml
+2026-05-11 21:35:27 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 21:35:27 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 21:35:35 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 21:35:35 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 21:35:35 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 21:35:38 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.

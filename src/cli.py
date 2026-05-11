@@ -1,5 +1,6 @@
 import logging
 import sys
+import os
 from pathlib import Path
 
 from src.config import AppConfig
@@ -32,6 +33,23 @@ def main():
     except Exception as e:
         logger.error(f"Config validation failed: {e}")
         sys.exit(1)
+    prompt_path = None
+    if env_prompt := os.getenv("PROMPT_PATH"):
+        prompt_path = Path(env_prompt)
+        if prompt_path.exists():
+            logger.info(f"📄 Using custom prompt from env: {prompt_path}")
+        else:
+            logger.warning(f"⚠️ Custom prompt not found at {prompt_path}, falling back to default")
+            prompt_path = None
+
+    notifier = TelegramNotifier(
+        bot_token=config.telegram_bot_token if hasattr(config, "telegram_bot_token") else "",
+        chat_id=config.telegram_chat_id if hasattr(config, "telegram_chat_id") else "",
+        enabled=True,
+    )
+
+    # 🆕 Передаём prompt_path в конструктор пайплайна
+    pipeline = AIPipeline(config, prompt_path=prompt_path)
 
     notifier = TelegramNotifier(
         bot_token=config.telegram_bot_token if hasattr(config, "telegram_bot_token") else "",
