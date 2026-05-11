@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from unittest.mock import MagicMock, patch
-
+import requests
 import pytest
 
 from src.config import AppConfig
@@ -49,7 +49,10 @@ def test_process_malformed_json_retry(mock_post, processor):
 
 @patch("src.processor.requests.post")
 def test_process_api_error_retry_limit(mock_post, processor):
-    mock_post.side_effect = Exception("Network error")
+    # Используем requests.RequestException — именно его ловит processor
+    mock_post.side_effect = requests.RequestException("Network error")
+    
     with pytest.raises(RuntimeError, match="failed after 3 attempts"):
         processor.process("sample")
+    
     assert mock_post.call_count == 3
