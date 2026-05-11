@@ -1,0 +1,53 @@
+{
+  "id": "gen-1778512849-gGB5xBfNn3tIVYR51XD1",
+  "object": "chat.completion",
+  "created": 1778512849,
+  "model": "inclusionai/ring-2.6-1t-20260508:free",
+  "provider": "Novita",
+  "system_fingerprint": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "**Дата:** 15 мая\n\n**Задача:** Подготовить историю болезни (к встрече с пациентом).",
+        "refusal": null,
+        "reasoning": "\n\nThe user asks to extract the date and the task from the given Russian text: \"Встреча с пациентом 15 мая, нужно подготовить историю болезни.\"\n\nLet me parse this:\n- Date: \"15 мая\" (May 15th)\n- Task: \"нужно подготовить историю болезни\" (need to prepare the medical history)\n\nThe context is a meeting with a patient on May 15th, and the task is to prepare the medical history for that meeting.",
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "\n\nThe user asks to extract the date and the task from the given Russian text: \"Встреча с пациентом 15 мая, нужно подготовить историю болезни.\"\n\nLet me parse this:\n- Date: \"15 мая\" (May 15th)\n- Task: \"нужно подготовить историю болезни\" (need to prepare the medical history)\n\nThe context is a meeting with a patient on May 15th, and the task is to prepare the medical history for that meeting.",
+            "format": "unknown",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 57,
+    "completion_tokens": 146,
+    "total_tokens": 203,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 166,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -50,11 +50,31 @@ def main():
     logger.info(f"🔄 Начало обработки {len(unprocessed)} файлов")
 
     try:
-        results = pipeline.run()
+        results = pipeline.run()  # возвращает список Path
         logger.info(f"✅ Завершено. Обработано: {len(results)}")
+        
+        # Считаем успехи/ошибки для отчёта
+        success_count = len(results)
+        
+        # Отправляем уведомления по каждому файлу
         for out_path in results:
-            notifier.notify_success(out_path.stem + ".txt", out_path)
+            # Читаем YAML frontmatter для передачи данных в бот
+            import yaml
+            meta = {}
+            try:
+                content = out_path.read_text(encoding="utf-8")
+                if content.startswith("---"):
+                    frontmatter = content.split("---")[1]
+                    meta = yaml.safe_load(frontmatter) or {}
+            except Exception:
+                pass
+                
+            notifier.notify_success(out_path.stem + ".txt", meta)
+            
     except Exception as e:
         logger.error(f"💥 Pipeline failed: {e}", exc_info=True)
-        notifier.notify_error("pipeline", str(e))
+        notifier.notify_error("system", str(e))
         sys.exit(2)
+    finally:
+        # Ежедневный отчёт (в продакшене можно вынести в cron)
+        notifier.notify_daily_summary(success_count if 'success_count' in locals() else 0, 0)

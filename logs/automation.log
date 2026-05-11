@@ -1,0 +1,69 @@
+2026-05-11 17:42:23 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 17:42:23 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 17:57:30 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 17:57:30 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 17:57:30 [WARNING] src.ingestion: UTF-8 failed for test_dental.txt, fallback to latin-1
+2026-05-11 17:57:30 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 17:57:31 [WARNING] src.processor: Attempt 1/3 failed: 404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions
+2026-05-11 17:57:33 [WARNING] src.processor: Attempt 2/3 failed: 404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions
+2026-05-11 17:57:38 [WARNING] src.processor: Attempt 3/3 failed: 404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions
+2026-05-11 17:57:38 [ERROR] src.pipeline: ❌ Failed test_dental.txt: LLM processing failed after 3 attempts: 404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions
+2026-05-11 17:57:38 [INFO] src.cli: ✅ Завершено. Обработано: 0
+2026-05-11 18:25:02 [ERROR] src.cli: Config validation failed: 2 validation errors for AppConfig
+http_referer
+  Extra inputs are not permitted [type=extra_forbidden, input_value='https://github.com/DNikulshin', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+app_title
+  Extra inputs are not permitted [type=extra_forbidden, input_value='ai-automation-starter', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+2026-05-11 18:25:18 [ERROR] src.cli: Config validation failed: 2 validation errors for AppConfig
+http_referer
+  Extra inputs are not permitted [type=extra_forbidden, input_value='https://github.com/DNikulshin', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+app_title
+  Extra inputs are not permitted [type=extra_forbidden, input_value='ai-automation-starter', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+2026-05-11 18:26:49 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:26:49 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 18:26:49 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 18:27:12 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 18:27:12 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 18:27:12 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 18:27:13 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:41:15 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:41:15 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 18:41:57 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:41:57 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 18:41:57 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 18:42:02 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 18:42:02 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 18:42:02 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 18:42:02 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:47:03 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:47:03 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 18:47:03 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 18:47:08 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 18:47:08 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 18:47:08 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 18:47:09 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:48:24 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:48:24 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 18:48:24 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 18:48:32 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 18:48:32 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 18:48:32 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 18:48:32 [ERROR] src.notifier: Failed to send Telegram notification: 400 Client Error: Bad Request for url: https://api.telegram.org/bot8795740348:AAHYKjtMZzJGr7yfjoDYaS3oc0OXVDpId-o/sendMessage
+2026-05-11 18:54:55 [INFO] src.notifier: 📤 Telegram notification sent
+2026-05-11 18:54:55 [INFO] src.cli: ✨ Нет необработанных файлов. Выход.
+2026-05-11 18:55:23 [INFO] src.notifier: 📤 Telegram notification sent
+2026-05-11 18:55:23 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 18:55:23 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 18:55:31 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 18:55:31 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 18:55:31 [INFO] src.cli: ✅ Завершено. Обработано: 1
+2026-05-11 18:55:31 [INFO] src.notifier: 📤 Telegram notification sent
+2026-05-11 19:04:15 [INFO] src.cli: 🔄 Начало обработки 1 файлов
+2026-05-11 19:04:15 [INFO] src.pipeline: 🔄 Processing: test_dental.txt
+2026-05-11 19:04:19 [INFO] src.exporter: 📄 Exported: test_dental.md
+2026-05-11 19:04:19 [INFO] src.ingestion: ✅ Marked as processed: test_dental.txt
+2026-05-11 19:04:19 [INFO] src.cli: ✅ Завершено. Обработано: 1

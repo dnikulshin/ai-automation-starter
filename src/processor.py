@@ -25,6 +25,7 @@ class LLMProcessor:
             "Authorization": f"Bearer {self.config.openrouter_api_key}",
             "Content-Type": "application/json",
             "HTTP-Referer": "https://github.com/DNikulshin",
+            "X-Title": "ai-automation-starter",
         }
         payload = {
             "model": self.config.llm_model,
