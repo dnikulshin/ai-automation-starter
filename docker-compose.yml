@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  ai-automation:
+    build: .
+    container_name: ai-automation-starter
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    # Для cron-запуска (опционально):
+    # command: ["sh", "-c", "while true; do python -m src; sleep 300; done"]
