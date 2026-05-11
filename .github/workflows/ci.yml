@@ -5,8 +5,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  
-  workflow_dispatch: {} # Ручной запуск из UI
+  workflow_dispatch:
+    inputs:
+      prompt_path:
+        description: 'Путь к промпту (из репозитория)'
+        required: false
+        default: 'prompts/default.yaml'
+        type: string
 
 env:
   PYTHON_VERSION: "3.11"
@@ -15,12 +20,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      # Переменные из репозитория (видимые)
+      # Переменные (видимые)
       LLM_MODEL: ${{ vars.LLM_MODEL }}
       MAX_RETRIES: ${{ vars.MAX_RETRIES }}
       REQUEST_TIMEOUT: ${{ vars.REQUEST_TIMEOUT }}
       HTTP_REFERER: ${{ vars.HTTP_REFERER }}
       APP_TITLE: ${{ vars.APP_TITLE }}
+      PROMPT_PATH: ${{ inputs.prompt_path || vars.PROMPT_PATH || 'prompts/default.yaml' }}
       
       # Секреты (скрытые)
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -31,7 +37,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -39,23 +45,44 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
-      - name: Set prompt path for CI
-        run: echo "PROMPT_PATH=${{ vars.PROMPT_PATH || 'prompts/default.yaml' }}" >> $GITHUB_ENV
 
-      - name: Override prompt for CI
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          mkdir -p prompts
-          echo '${{ vars.TEST_PROMPT }}' > prompts/ci-test.yaml
-          echo "PROMPT_PATH=prompts/ci-test.yaml" >> $GITHUB_ENV
-          
-      - name: Run unit & mock tests
+      - name: Run Unit Tests
         run: pytest tests/ -v --tb=short
 
-      - name: Run Real Integration Test (Manual Only)
+      # 🔹 ТОЛЬКО ПРИ РУЧНОМ ЗАПУСКЕ: готовим тестовые данные и промпт
+      - name: Prepare Integration Test Environment
         if: github.event_name == 'workflow_dispatch'
         run: |
-          echo "🚀 Запуск реального пайплайна с API..."
-          python -m src
-          echo "✅ Интеграционный тест завершён"
+          echo "📄 Используемый промпт: $PROMPT_PATH"
+          mkdir -p data/input data/output data/processed logs
+          
+          # Создаём тестовую транскрипцию (символы $ и {} экранированы для bash)
+          cat > data/input/ci_dental_test.txt << 'EOF'
+          Пациент Петрова М.С., 34 года. Жалобы на острую боль в зубе 36 при накусывании.
+          Объективно: полость разрушена на 2/3, зондирование дна болезненно. Перкуссия слабоположительная.
+          Диагноз: К02.1 Средний кариес зуба 36.
+          План: Препарирование, постановка светоотверждаемой пломбы. Контроль через 6 месяцев.
+          EOF
+          
+          echo "✅ Тестовые файлы созданы"
+
+      - name: Run Real LLM Pipeline
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          PROMPT_PATH: ${{ env.PROMPT_PATH }}
+        run: |
+          echo "🚀 Запуск python -m src с промптом: $PROMPT_PATH"
+          python -m src || { echo "❌ Пайплайн завершился с ошибкой. См. логи выше."; exit 1; }
+          
+          echo ""
+          echo "📦 РЕЗУЛЬТАТ ОБРАБОТКИ:"
+          echo "========================"
+          if compgen -G "data/output/*.md" > /dev/null; then
+            for file in data/output/*.md; do
+              echo "📄 Файл: $file"
+              cat "$file"
+              echo "------------------------"
+            done
+          else
+            echo "⚠️ Файлы в output/ не созданы (проверьте логи LLM и кодировку)"
+          fi
